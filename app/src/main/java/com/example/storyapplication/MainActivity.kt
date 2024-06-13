@@ -65,7 +65,7 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier.padding(it),
                                 storyGalleryData = StoryGalleryData(
                                     pages = storyPageList,
-                                    progressBarDurationMillis = 2000
+                                    progressBarDurationMillis = 5000,
 
                                 ),
                                 storyEvents = object : StoryEvents() {
