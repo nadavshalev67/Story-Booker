@@ -19,7 +19,7 @@ fun ProgressBarRow(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .height(48.dp)
-            .padding(24.dp, 0.dp),
+            .padding(12.dp, 0.dp),
         horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         for (index in items.indices) {

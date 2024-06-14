@@ -15,7 +15,6 @@ fun ThumbnailGallery(
     thumbnailStyle: ThumbnailStyle = ThumbnailStyle(),
     onThumbnailClick: (Int, ThumbnailData) -> Unit,
 ) {
-
     LazyRow(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(8.dp),

@@ -46,7 +46,7 @@ fun <T : LoadingData> StorySinglePage(
     progressBarDurationMillis: Int,
     onNextPageRequested: () -> Unit,
     onPrevPageRequested: () -> Unit,
-    storyEvents: StoryEvents? = null,
+    storyEvents: StoryEvents<T>? = null,
     content: @Composable (StoryInnerData<T>) -> Unit,
 ) {
     val pagerState = rememberPagerState(
@@ -56,7 +56,9 @@ fun <T : LoadingData> StorySinglePage(
     val isTransitioning by remember { derivedStateOf { outerPagerState.isScrollInProgress } }
     var lastNumberPageImpression by remember { mutableIntStateOf(Integer.MIN_VALUE) }
 
+
     val scope = rememberCoroutineScope()
+
     var state by remember {
         mutableStateOf(
             StoryPageState(
@@ -89,12 +91,9 @@ fun <T : LoadingData> StorySinglePage(
         }
     }
 
-
     fun restart() {
         state = state.copy(
-            percent = Animatable(0f)
-        )
-        state = state.copy(
+            percent = Animatable(0f),
             shouldPause = false,
         )
     }
@@ -127,11 +126,10 @@ fun <T : LoadingData> StorySinglePage(
                 storyEvents?.onInnerPageImpression(
                     outerPageNumber = pageNumber,
                     innerPageNumber = pagerState.currentPage,
+                    item = items[pagerState.currentPage],
                 )
             }
         }
-
-
     }
 
     fun prevItem() {
@@ -219,13 +217,12 @@ fun <T : LoadingData> StorySinglePage(
                 )
             }
     ) {
-        if (items[pagerState.currentPage].isLoaded.not()) {
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize()
-            ) {
-                CircularProgressIndicator()
-            }
+        HorizontalPager(
+            userScrollEnabled = false,
+            state = pagerState,
+            beyondBoundsPageCount = 2,
+        ) { currentPage ->
+            content(StoryInnerData(currentPage, items[currentPage]))
         }
 
         ProgressBarRow(
@@ -234,12 +231,13 @@ fun <T : LoadingData> StorySinglePage(
             fillPercentage = state.percent.value
         )
 
-        HorizontalPager(
-            userScrollEnabled = false,
-            state = pagerState,
-            beyondBoundsPageCount = 2,
-        ) { currentPage ->
-            content(StoryInnerData(currentPage, items[currentPage]))
+        if (items[pagerState.currentPage].isLoaded.not()) {
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                CircularProgressIndicator()
+            }
         }
     }
 }

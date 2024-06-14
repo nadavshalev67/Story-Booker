@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 data class StoryGalleryData<T : LoadingData>(
     val pages: Map<Int, List<T>>,
     val progressBarDurationMillis: Int = 5000,
+    val initialPage: Int = 0,
 )
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -28,14 +29,13 @@ data class StoryGalleryData<T : LoadingData>(
 fun <T : LoadingData> StoryGallery(
     modifier: Modifier = Modifier,
     storyGalleryData: StoryGalleryData<T>,
-    initialPage: Int = 0,
-    storyEvents: StoryEvents? = null,
+    storyEvents: StoryEvents<T>? = null,
     content: @Composable (Int, StoryInnerData<T>) -> Unit,
 ) {
     val coroutineScope = rememberCoroutineScope()
     val pagerState = rememberPagerState(
         pageCount = { storyGalleryData.pages.size },
-        initialPage = initialPage,
+        initialPage = storyGalleryData.initialPage,
     )
 
     var lastSettledPage by remember { mutableIntStateOf(-1) }
@@ -59,6 +59,7 @@ fun <T : LoadingData> StoryGallery(
             Modifier
                 .pagerCubeOutRotationTransition(currentPage, pagerState)
                 .fillMaxSize()
+
         ) {
             StorySinglePage(
                 progressBarDurationMillis = storyGalleryData.progressBarDurationMillis,

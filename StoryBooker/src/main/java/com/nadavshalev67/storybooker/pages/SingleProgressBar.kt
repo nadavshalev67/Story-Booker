@@ -23,11 +23,11 @@ fun SingleProgressBar(
         modifier = modifier
             .height(4.dp)
             .clip(CircleShape)
-            .background(Color.White.copy(alpha = 0.4f))
+            .background(Color.LightGray.copy(alpha = 0.4f))
     ) {
         Box(
             modifier = Modifier
-                .background(Color.White)
+                .background(Color(0xFFB9B4B4))
                 .fillMaxHeight()
                 .fillMaxWidth(fillPercentage),
         )
