@@ -123,7 +123,7 @@ StoryGallery(
 # Gallery Events
 ```kotlin
 val storyEventsListener =
-    object : StoryEvents<PokemonEntity>() {
+    object : StoryEvents<T>() {
         override fun onOuterPageImpression(outerPageNumber: Int) {
         // Triggers when an out-page is viewed
         }
