@@ -18,12 +18,11 @@ import kotlinx.coroutines.launch
 
 sealed class DisplayView {
     data object Thumbnails : DisplayView()
-    data object Story : DisplayView()
+    data class Story(val index: Int) : DisplayView()
 }
 
 data class StoryUiState(
     val displayView: DisplayView = DisplayView.Thumbnails,
-    val indexClicked: Int = 0,
 )
 
 class PokemonViewModel(
@@ -31,22 +30,21 @@ class PokemonViewModel(
 ) : ViewModel() {
 
     private val allPokemonsData: StateFlow<List<TypeWithPokemons>> =
-        pokemonRepository.getAllPokemonsData().stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.Lazily,
-            initialValue = emptyList()
-        )
+        pokemonRepository.getAllPokemonsData()
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.Lazily,
+                initialValue = emptyList()
+            )
 
     private val _uiState = MutableStateFlow(StoryUiState())
     val uiState: StateFlow<StoryUiState> = _uiState
-
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
             pokemonRepository.refreshList()
         }
     }
-
 
     val pokemonsThumbnailFlow: StateFlow<List<ThumbnailData>> =
         allPokemonsData.map {
@@ -95,8 +93,7 @@ class PokemonViewModel(
 
     fun onThumbnailClicked(index: Int) {
         _uiState.value = _uiState.value.copy(
-            displayView = DisplayView.Story,
-            indexClicked = index,
+            displayView = DisplayView.Story(index),
         )
     }
 

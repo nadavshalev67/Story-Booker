@@ -69,7 +69,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-//    implementation("com.github.nadavshalev67:Story-Booker:1.0.0-alpha")
+    implementation ("com.github.nadavshalev67:Story-Booker:1.0.0")
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
     implementation(libs.koin.android)
@@ -82,5 +82,5 @@ dependencies {
     ksp("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
 
-    implementation(project(":StoryBooker"))
+//    implementation(project(":StoryBooker"))
 }

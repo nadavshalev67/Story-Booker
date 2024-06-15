@@ -22,5 +22,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Story Application"
 include(":app")
-include(":StoryBooker")
+//include(":StoryBooker")
 
