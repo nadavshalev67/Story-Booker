@@ -12,7 +12,7 @@ https://github.com/nadavshalev67/Story-Booker/assets/36004285/b9a3ef0c-ea4e-4f6c
 
 ### Features
 
-- Craft Instagram-style stories with full design flexibility:.
+- Craft Instagram-style stories with full design flexibility:
   These include:
     - Customize Story Thumbnails Gallery with fine-tuned specifics:
        - Adjustable story size and border size
@@ -24,6 +24,22 @@ https://github.com/nadavshalev67/Story-Booker/assets/36004285/b9a3ef0c-ea4e-4f6c
        - Time-adjustable top bars: Offers duration customization for versatile storytelling timings.
        - Smooth transitions: Offers cubic transition animations between pages for a seamless viewing experience.
   Achieve all this and more in just a few lines of code, saving time and enhancing productivity.
+
+### Installation
+
+build.gradle(.kts)
+
+```kotlin
+implementation ("com.github.nadavshalev67:Story-Booker:<Version>")
+```
+
+libs.versions.toml
+
+```toml
+sonner = { module = "com.github.nadavshalev67:Story-Booker", version = "<VERSION>" }
+```
+
+### Usage
    
 
 
