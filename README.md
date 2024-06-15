@@ -8,7 +8,7 @@
 
 ### Demo
 
-https://github.com/nadavshalev67/Story-Booker/assets/36004285/b9a3ef0c-ea4e-4f6c-8ba7-2dcdd8b478e6
+https://github.com/nadavshalev67/Story-Booker/assets/36004285/8efc32a2-3d56-45a6-9935-aeb449ab5551
 
 ### Features
 
