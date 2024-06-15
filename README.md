@@ -95,6 +95,69 @@ data class ThumbnailStyle(
 
 ##  Story Gallery
 
+![Story Gallery demo](https://github.com/nadavshalev67/Story-Booker/assets/36004285/fee0342b-3a66-476f-b4f8-dc39afaa02c1)
+
+```kotlin
+val contentGallery: Map<Int, List<PokemonEntity>> =
+    mapOf(
+        0 to listOf(PokemonEntity(), PokemonEntity()),
+        1 to listOf(PokemonEntity(),PokemonEntity()),
+    )
+
+StoryGallery(
+    modifier = Modifier.padding(it).background(Color.Black),
+    storyGalleryData = StoryGalleryData(
+            pages = contentGallery,
+            initialPage = 0, 
+            progressBarDurationMillis = 2000, 
+        ),
+    storyEvents = storyEventsListener
+) { page, innerPageSingleData ->
+   // Your composable implementation for drawing inside the gallery for each item
+}
+
+```
+
+> **_NOTE:_**  For the Story Gallery Item to function correctly, it should implement the LoadingData interface. This allows the library to display a loading progress bar when the data is not yet loaded. If you prefer to implement your own progress indicator, you may set isLoading to true by default in the LoadingData interface.
+
+# Gallery Events
+```kotlin
+val storyEventsListener =
+    object : StoryEvents<PokemonEntity>() {
+        override fun onOuterPageImpression(outerPageNumber: Int) {
+        // Triggers when an out-page is viewed
+        }
+        
+        override fun onInnerPageImpression(
+            outerPageNumber: Int,
+            innerPageNumber: Int,
+            item: PokemonEntity,
+        ) {
+        // Triggers when an inner-page of an out-page is viewed
+        }
+
+        // Triggers when the story reaches completion
+        override fun onComplete() {}
+    }
+```
+
+# License
+
+```
+Copyright 2024 dokar3
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 
 
 
