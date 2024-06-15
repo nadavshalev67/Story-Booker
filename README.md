@@ -13,7 +13,6 @@ https://github.com/nadavshalev67/Story-Booker/assets/36004285/b9a3ef0c-ea4e-4f6c
 ### Features
 
 - Craft Instagram-style stories with full design flexibility:
-  These include:
     - Customize Story Thumbnails Gallery with fine-tuned specifics:
        - Adjustable story size and border size
        - Personalized text styling for distinctive narration
@@ -40,7 +39,46 @@ sonner = { module = "com.github.nadavshalev67:Story-Booker", version = "<VERSION
 ```
 
 ### Usage
-   
+<img width="334" alt="Thumbnails Example" src="https://github.com/nadavshalev67/Story-Booker/assets/36004285/82eada3d-e2b6-477f-a38a-9892eccf86a8">
+
+# Thumbnails Gallery
+```kotlin
+val list: List<ThumbnailData> =
+    listOf(
+        ThumbnailData(
+            imageSource =
+                ImageSource.Url(
+                    url =
+                        "https://www.giantbomb.com/a/uploads/scale_medium/16/164924/3083931-8746743194-flat%2C.jpg",
+                ),
+            text = "Fire",
+            isViewedAll = true,
+        ),
+        ThumbnailData(
+            imageSource =
+                ImageSource.DrawableRes(
+                    resId = R.drawable.first,
+                ),
+            text = "First",
+            isViewedAll = false,
+        ),
+    )
+
+ThumbnailGallery(
+    modifier = Modifier.padding(top = 10.dp),
+    thumbnailItems = list,
+    onThumbnailClick = { index, data ->
+        // Implement your own logic
+    },
+)
+
+```
+#  Story Gallery
+
+
+
+
+
 
 
 
