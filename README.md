@@ -131,7 +131,7 @@ val storyEventsListener =
         override fun onInnerPageImpression(
             outerPageNumber: Int,
             innerPageNumber: Int,
-            item: PokemonEntity,
+            item: T,
         ) {
         // Triggers when an inner-page of an out-page is viewed
         }
