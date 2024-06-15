@@ -98,7 +98,7 @@ data class ThumbnailStyle(
 ![Story Gallery demo](https://github.com/nadavshalev67/Story-Booker/assets/36004285/fee0342b-3a66-476f-b4f8-dc39afaa02c1)
 
 ```kotlin
-val contentGallery: Map<Int, List<PokemonEntity>> =
+val contentGallery: Map<Int, List<T>> =
     mapOf(
         0 to listOf(PokemonEntity(), PokemonEntity()),
         1 to listOf(PokemonEntity(),PokemonEntity()),
