@@ -35,7 +35,7 @@ implementation ("com.github.nadavshalev67:Story-Booker:<Version>")
 libs.versions.toml
 
 ```toml
-sonner = { module = "com.github.nadavshalev67:Story-Booker", version = "<VERSION>" }
+story-booker = { module = "com.github.nadavshalev67:Story-Booker", version = "<VERSION>" }
 ```
 
 ### Usage
